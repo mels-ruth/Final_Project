@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Final Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .wide-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .visualization {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .visualization h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .visualization.wide {
+            max-width: none;
+            width: 100%;
+        }
+        
+        .summary {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border-left: 3px solid #333;
+        }
+        
+        .references {
+            margin-top: 40px;
+        }
+        
+        .references ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .references li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DS4200: Information Visualization Final Project</h1>
+        
+        <section class="introduction">
+            <h2>Introduction to Topic</h2>
+            <p>Road traffic crashes are a major public-health and infrastructure problem. Identifying geographic “hotspots” helps transportation planners prioritize countermeasures (signage, engineering, enforcement), while understanding how weather and environmental conditions change risk enables targeted warnings or adaptive traffic control. 
+                Using a large, multi-year, national dataset, we will detect statistically significant spatial accident hotspots across the contiguous U.S. and build weather-aware models to identify high-risk time windows. This combined approach can help direct resources to dangerous places and times, 
+                and potentially show how weather factors interact with location and time to elevate accident risk.</p>
+        </section>
+        
+        <section class="data-intro">
+            <h2>About the Data</h2>
+            <p>Our dataset comes from Kaggle and can be found here: <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents/data">US Accidents (2016 - 2023)</a>. This dataset was collected via multiple traffic camera APIs covering streams from US and state DOTs, law enforcement feeds, and sensors for the continental United States from Feb 2016 to Mar 2023, with about 7.7M accident records. 
+                Typical fields include: location (latitude, longitude), start/end timestamps, accident severity, weather variables (temperature, visibility, precipitation), road type, number of vehicles, and first-account descriptions.</p>
+        </section>
+        
+        <section class="visualizations">
+            <h2>Visualizations</h2>
+            
+            <div class="visualization">
+                <h3>Interactive Altair Plot</h3>
+                <iframe src="Final Plots/Hotspot Map.html" width="100%" height="750px" frameborder="0"></iframe>
+                <div class="summary">
+                    <strong>Summary of Findings:</strong>
+                    <p>This plot groups Massachussets crash data into geographic grid cells, then counts how many accidents happened in each cell. We could have drawn an even grid, but then there would likely be many empty bins in rural western mass while boston would have tons of accidents crammed into just a few cells. 
+                        Instead, these bins are quantile-based. This approach divides the data so that each bin has roughly the same number of data points, which is better for non-uniform distributions such as this one. This map shows hot spots where accidents occur most often. Dataset is filtered to that each circle has at minimum 2 accidents.
+                        This plot has tooltips for Most Common Road in the bin, Average severity (1 being least and 4 being most severe), and total number of accidents in the bin. The mark size is based on number of accidents, and mark color is based on severity.
+                        From this plot, we can see that more severe accidents tend to happen on main highways like I-495, I-95, I-93, I-90, and I-91, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on smaller roads, likely due to the decreased speed.</p>
+                </div>
+            </section>
+        </div>
+           
+        <div class="wide-container">
+            <div class="visualization" style="max-width: none; padding: 40px 20px;">
+                        <h3>Interactive Altair Plot</h3>
+                <iframe src="Final Plots/Count and Severity by Hour Map.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
+                <div class="summary">
+                    <strong>Summary of Findings:</strong>
+                    <p>This is a side-by-side plot of Accident Counts and Average Severity in Massachusetts counties, with an interactive slider bar showing the values corresponding to each hour of the day. This is data from 2016-2023. 
+                        From this plot, we can see that most accidents occur in Middlesex, Norfolk, and Suffolk counties during 8-7am and 4-5pm. This could be due to the rush-hour commute of people from suburbs into the city of Boston, who get into accidents on their way to and from work. 
+                        From the corresponding severity map on the right, we can see that severity is highest in the middle of the night (12am - 4am, decreases during the day, then increases again around 8pm-11pm. 
+                        This could be due to the fact that there are more drunk drivers are the road during this time, driving home from after-dinner drinks or clubs as the evening gets later. 
+                        It seems that severity is higher in more rural regions, possibly due to the fact that it's harder to get ubers or rides from other people, and the only option late at night is to drive yourself under the influence.
+                        It seems that there is an inverse relationship between accident count and accident severity, where more severe accidents are more rare and if lots of accidents are happening, they are not as severe. 
+                        Future directions include plotting the relationship between accident count and accident severity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="visualization">
+                <h3>Visualization 3</h3>
+                <div class="viz-placeholder">
+                    <span>Insert your third visualization here</span>
+                </div>
+                <div class="summary">
+                    <strong>Summary of Findings:</strong>
+                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
+                </div>
+            </div>
+            
+            <div class="visualization">
+                <h3>Visualization 4</h3>
+                <div class="viz-placeholder">
+                    <span>Insert your fourth visualization here</span>
+                </div>
+                <div class="summary">
+                    <strong>Summary of Findings:</strong>
+                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
+                </div>
+            </div>
+            
+            <div class="visualization">
+                <h3>Visualization 5</h3>
+                <div class="viz-placeholder">
+                    <span>Insert your fifth visualization here</span>
+                </div>
+                <div class="summary">
+                    <strong>Summary of Findings:</strong>
+                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
+                </div>
+            </div>
+        </section>
+        </div>
+        
+        <section class="container">
+            <h2>References</h2>
+            <ol>
+                <li>Golestani, A., Rezaei, N., Malekpour, M. R., Ahmadi, N., Ataei, S. M., Khosravi, S., Jafari, A., Shahraz, S., & Farzadfar, F. (2025). Predicting errors in accident hotspots and investigating satiotemporal, weather, and behavioral factors using interpretable machine learning: An analysis of telematics big data. 
+                    PloS one, 20(7), e0326483 <a href="https://doi.org/10.1371/journal.pone.0326483">https://doi.org/10.1371/journal.pone.0326483</a></li>
+                <li>Hamid Mirzahossein, Pedram Nobakht, Travis Waller, Dung-Ying Lin, Revealing crash hotspots concerning google traffic maps historical data by supervised and ensemble machine learning techniques,
+                    Transportation Engineering, Volume 20, 2025, 100326, ISSN 2666-691X <a href="https://doi.org/10.1016/j.treng.2025.100326">https://doi.org/10.1016/j.treng.2025.100326</a></li>
+            </ol>
+        </section>
+    </div>
+</body>
+</html>
