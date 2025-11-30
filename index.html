@@ -88,7 +88,7 @@
         
         <section class="introduction">
             <h2>Introduction to Topic</h2>
-            <p>Road traffic crashes are a major public-health and infrastructure problem. Identifying geographic “hotspots” helps transportation planners prioritize countermeasures (signage, engineering, enforcement), while understanding how weather and environmental conditions change risk enables targeted warnings or adaptive traffic control. 
+            <p>Road traffic crashes are a major public-health and infrastructure problem. Identifying geographic "hotspots" helps transportation planners prioritize countermeasures (signage, engineering, enforcement), while understanding how weather and environmental conditions change risk enables targeted warnings or adaptive traffic control. 
                 Using a large, multi-year, national dataset, we will detect statistically significant spatial accident hotspots across the contiguous U.S. and build weather-aware models to identify high-risk time windows. This combined approach can help direct resources to dangerous places and times, 
                 and potentially show how weather factors interact with location and time to elevate accident risk.</p>
         </section>
@@ -102,7 +102,7 @@
         <section class="visualizations">
             <h2>Visualizations</h2>
             
-            <div class="visualization">
+            <div class="visualization"> 
                 <h3>Interactive Altair Plot</h3>
                 <iframe src="Hotspot_Map.html" width="100%" height="750px" frameborder="0"></iframe>
                 <div class="summary">
@@ -112,63 +112,62 @@
                         This plot has tooltips for Most Common Road in the bin, Average severity (1 being least and 4 being most severe), and total number of accidents in the bin. The mark size is based on number of accidents, and mark color is based on severity.
                         From this plot, we can see that more severe accidents tend to happen on main highways like I-495, I-95, I-93, I-90, and I-91, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on smaller roads, likely due to the decreased speed.</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+    </div>
            
-        <div class="wide-container">
-            <div class="visualization" style="max-width: none; padding: 40px 20px;">
-                        <h3>Interactive Altair Plot</h3>
-                <iframe src="Count_and_Severity_by_Hour_Map.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
-                <div class="summary">
-                    <strong>Summary of Findings:</strong>
-                    <p>This is a side-by-side plot of Accident Counts and Average Severity in Massachusetts counties, with an interactive slider bar showing the values corresponding to each hour of the day. This is data from 2016-2023. 
-                        From this plot, we can see that most accidents occur in Middlesex, Norfolk, and Suffolk counties during 8-7am and 4-5pm. This could be due to the rush-hour commute of people from suburbs into the city of Boston, who get into accidents on their way to and from work. 
-                        From the corresponding severity map on the right, we can see that severity is highest in the middle of the night (12am - 4am, decreases during the day, then increases again around 8pm-11pm. 
-                        This could be due to the fact that there are more drunk drivers are the road during this time, driving home from after-dinner drinks or clubs as the evening gets later. 
-                        It seems that severity is higher in more rural regions, possibly due to the fact that it's harder to get ubers or rides from other people, and the only option late at night is to drive yourself under the influence.
-                        It seems that there is an inverse relationship between accident count and accident severity, where more severe accidents are more rare and if lots of accidents are happening, they are not as severe. 
-                        Future directions include plotting the relationship between accident count and accident severity.</p>
-                </div>
+    <div class="wide-container">
+        <div class="visualization" style="max-width: none; padding: 40px 20px;">
+            <h3>Interactive Altair Plot</h3>
+            <iframe src="Count_and_Severity_by_Hour_Map.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
+            <div class="summary">
+                <strong>Summary of Findings:</strong>
+                <p>This is a side-by-side plot of Accident Counts and Average Severity in Massachusetts counties, with an interactive slider bar showing the values corresponding to each hour of the day. This is data from 2016-2023. 
+                    From this plot, we can see that most accidents occur in Middlesex, Norfolk, and Suffolk counties during 8-7am and 4-5pm. This could be due to the rush-hour commute of people from suburbs into the city of Boston, who get into accidents on their way to and from work. 
+                    From the corresponding severity map on the right, we can see that severity is highest in the middle of the night (12am - 4am, decreases during the day, then increases again around 8pm-11pm. 
+                    This could be due to the fact that there are more drunk drivers are the road during this time, driving home from after-dinner drinks or clubs as the evening gets later. 
+                    It seems that severity is higher in more rural regions, possibly due to the fact that it's harder to get ubers or rides from other people, and the only option late at night is to drive yourself under the influence.
+                    It seems that there is an inverse relationship between accident count and accident severity, where more severe accidents are more rare and if lots of accidents are happening, they are not as severe. 
+                    Future directions include plotting the relationship between accident count and accident severity.</p>
             </div>
         </div>
 
-        <div class="container">
-            <div class="visualization">
-                <h3>Visualization 3</h3>
-                <div class="viz-placeholder">
-                    <span>Insert your third visualization here</span>
-                </div>
-                <div class="summary">
-                    <strong>Summary of Findings:</strong>
-                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
-                </div>
+        <div class="visualization">
+            <h3>Interactive Altair Visualization</h3>
+            <iframe src="bar_line_plot.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
+            <div class="summary">
+                <strong>Summary of Findings:</strong>
+                <p>This is a line plot of the total number of incidents at a given hour overlaid on top of a bar chart showing the average severity during that hour. There is a drop where you may choose to filter the data from All, Individual Day, Weekend, or Weekday. 
+                    This is data from 2016-2023 and there are some extra statistics at the bottom. We can see from the All graph that it's much safer to drive around peak work hours of 12pm - 3pm. It's least safe to drive in the dead of night from the hours of 1am - 5 am or after work around 8pm. 
+                    All this is likely due to the natural number of drivers being lower during work and more in rush hour, as well as the fact that people drive more recklessly at late hours where the average person sleeps. 
+                    Evident by the fact that the number of crashes at night are much lower but the severity is higher at peaks of 2.5. It's also good to note that weekends are generally less safe to drive in as well. This is shown by how the weekend chart becomes far more sporadic, with higher highs and lower lows. 
+                    That makes perfect sense, since most people aren't working on weekends and are out later, having more fun. (usually involving alcohol)</p>
             </div>
-            
-            <div class="visualization">
-                <h3>Visualization 4</h3>
-                <div class="viz-placeholder">
-                    <span>Insert your fourth visualization here</span>
-                </div>
-                <div class="summary">
-                    <strong>Summary of Findings:</strong>
-                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
-                </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="visualization">
+            <h3>Static Plot</h3>
+            <img src="Weather_Conditions.png" width="900" height="600"></img>
+            <div class="summary">
+                <strong>Summary of Findings:</strong>
+                <p>[Describe what this visualization shows and what insights you gained from it.]</p>
             </div>
-            
-            <div class="visualization">
-                <h3>Visualization 5</h3>
-                <div class="viz-placeholder">
-                    <span>Insert your fifth visualization here</span>
-                </div>
-                <div class="summary">
-                    <strong>Summary of Findings:</strong>
-                    <p>[Describe what this visualization shows and what insights you gained from it.]</p>
-                </div>
-            </div>
-        </section>
         </div>
         
-        <section class="container">
+        <div class="visualization">
+            <h3>Visualization 5</h3>
+            <div class="viz-placeholder">
+                <span>Insert your fifth visualization here</span>
+            </div>
+            <div class="summary">
+                <strong>Summary of Findings:</strong>
+                <p>[Describe what this visualization shows and what insights you gained from it.]</p>
+            </div>
+        </div>
+        
+        <section class="references">
             <h2>References</h2>
             <ol>
                 <li>Golestani, A., Rezaei, N., Malekpour, M. R., Ahmadi, N., Ataei, S. M., Khosravi, S., Jafari, A., Shahraz, S., & Farzadfar, F. (2025). Predicting errors in accident hotspots and investigating satiotemporal, weather, and behavioral factors using interpretable machine learning: An analysis of telematics big data. 
