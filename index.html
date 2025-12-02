@@ -80,11 +80,16 @@
         .references li {
             margin-bottom: 10px;
         }
+
+        ol {
+        margin-left: 40px; /* Adjust the value as needed (e.g., px, em, rem, %) */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>DS4200: Information Visualization Final Project</h1>
+        <h1>Hotspots & Weather: Mapping and Predicting High-Risk Accident Windows in the US</h1>
         
         <section class="introduction">
             <h2>Introduction to Topic</h2>
@@ -107,10 +112,10 @@
                 <iframe src="Hotspot_Map.html" width="100%" height="750px" frameborder="0"></iframe>
                 <div class="summary">
                     <strong>Summary of Findings:</strong>
-                    <p>This plot groups Massachussets crash data into geographic grid cells, then counts how many accidents happened in each cell. We could have drawn an even grid, but then there would likely be many empty bins in rural western mass while boston would have tons of accidents crammed into just a few cells. 
-                        Instead, these bins are quantile-based. This approach divides the data so that each bin has roughly the same number of data points, which is better for non-uniform distributions such as this one. This map shows hot spots where accidents occur most often. Dataset is filtered to that each circle has at minimum 2 accidents.
-                        This plot has tooltips for Most Common Road in the bin, Average severity (1 being least and 4 being most severe), and total number of accidents in the bin. The mark size is based on number of accidents, and mark color is based on severity.
-                        From this plot, we can see that more severe accidents tend to happen on main highways like I-495, I-95, I-93, I-90, and I-91, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on smaller roads, likely due to the decreased speed.</p>
+                    <p>This plot groups Massachussets crash data into geographic grid cells, then counts how many accidents happened in each cell. The quantile-based bin system is better for displaying non-uniform distribution. Each circle is a bin, where the size of the bin is dependent on how many accidents occur in that location, 
+                        and the color of the bin is dependent on the average severity of those crashes. The dataset is filtered to that each circle has at minimum 2 accidents.
+                        This plot has tooltips for Most Common Road in the bin, Average severity (1 being least and 4 being most severe), and total number of accidents in the bin. The tooltips also show the most common road that the accident occurred on, giving a good sense of which roads tend to be the most dangerous or most likely for an accident to occur on.
+                        From this plot, we can see that more severe accidents tend to happen on main highways like I-495, I-95, I-93, I-90, and I-91, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on less-popular roads, likely due to the decreased speed limits on those roads.</p>
                 </div>
             </div>
         </section>
@@ -182,6 +187,44 @@
                 </p>
             </div>
         </div>
+
+        <section class="introduction">
+            <h2>Conclusions</h2>
+            <ol>
+                <li>Accident count is highest on main highways and during rush hour on weekdays</li>
+                <ol type="a">
+                    <li>Where there are a lot of people traveling at once, accident count increases while severity decreases</li>
+                </ol>
+                <li>Accident severity depends largely on road type, day of week, hour of day, and weather type</li>
+                <ol type="a">
+                    <li>More severe accidents tend to happen on highways and weekends</li>
+                    <li>More severe during late night/early morning</li>
+                    <li>Most severe during snow/ice</li>
+                </ol>
+            </ol>
+        </section>
+
+        <section class="introduction">
+            <h2>Complete Summary</h2>
+            <p>From our plots, we were able to observe some pretty clear trends in accident count, or the number of accidents that occur. From the first and second plots, we can see that accident count is highest on main highways, during rush-hour (7-9am and 5-7pm), and on weekdays. 
+                This could imply that since the number of vehicles on the road is increased, the number of crashes or likelihood of a crash occurring is also increased. Interestingly, these rush-hour crashes do not appear to be very severe, as we can see from the second and third plots. 
+                This could be due to higher amounts of traffic, causing the vehicles to move at a slower speed (since speed of vehicle is very strongly correlated with crash severity). 
+            </p>
+            <p>
+                We also observed several different variables that appear to be associated with the severity of a car accident, namely, road type, day of the week, hour of the day, and weather at the time of the accident. 
+                With respect to road type, accidents on highways tend to be more severe than on other types of roads, potentially due to higher speed limits on these roads and a higher volume of travel. Less severe accidents tend to be on less-populated roads, likely due to their lower speed limits. 
+            </p>
+            <p>
+                In terms of a driver's safety when it comes to day of the week and the time we had some conclusive results from the data. It turns out that weekdays came out to having more car crashes than weekends generally, but weekends had more severe crashes. While the severity from an average weekday to weekend goes from 2.384 to 2.460, 
+                only a 3.19% increase, the amount it can vary around certain times is greater. For example, around 1 am, severity from weekday to weekend increases 10.16%.  The data also gives us many insights into the less safe hours of the day to drive. We concluded that around 11 am and around 8 pm are when most accidents occur. 
+                This can change drastically with the day of the week, reflecting work and socializing habits. Saturday has the majority of its crashes at 3 pm, possibly because there is no work or school to keep people off the road at this time.  Furthermore, it should be noted that there are fewer accidents during sleeping hours, 
+                but the severity of those crashes are generally worse than at other times of the day. All this to say, drivers should stay vigilant at all times, as both the likelihood and severity of crashes can shift depending on the day and hour.
+            </p>
+            <p>
+                The severity of the car accident also depends on the type of weather. Accidents of severity level 4 are rare, but they make up a higher proportion of accidents that occur in sleet, ice, snow, rain, and dust, indicating that visibility and road traction are two important factors that contribute to driving safety. 
+                Overall, the goal of this analysis is to raise awareness of the conditions that tend to coincide with increased crash frequency and severity to help drivers make safer, more informed decisions on the road. 
+            </p>
+        </section>
         
         <section class="references">
             <h2>References</h2>
@@ -192,6 +235,7 @@
                     Transportation Engineering, Volume 20, 2025, 100326, ISSN 2666-691X <a href="https://doi.org/10.1016/j.treng.2025.100326">https://doi.org/10.1016/j.treng.2025.100326</a></li>
             </ol>
         </section>
+        
     </div>
 </body>
 </html>
