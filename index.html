@@ -32,7 +32,7 @@
         
         h1 {
             font-size: 2em;
-            margin-bottom: 30px;
+            /* margin-top: 30px; */
             text-align: center;
         }
         
@@ -89,33 +89,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hotspots & Weather: Mapping and Predicting High-Risk Accident Windows in the US</h1>
+        <h1>Hotspots & Weather:</h1>
+        <h1>Mapping High-Risk Accident Windows in the US</h1>
         
         <section class="introduction">
             <h2>Introduction to Topic</h2>
-            <p>Road traffic crashes are a major public-health and infrastructure problem. Identifying geographic "hotspots" helps transportation planners prioritize countermeasures (signage, engineering, enforcement), while understanding how weather and environmental conditions change risk enables targeted warnings or adaptive traffic control. 
-                Using a large, multi-year, national dataset, we will detect statistically significant spatial accident hotspots across the contiguous U.S. and build weather-aware models to identify high-risk time windows. This combined approach can help direct resources to dangerous places and times, 
-                and potentially show how weather factors interact with location and time to elevate accident risk.</p>
+            <p>Road traffic crashes are a major public-health and infrastructure problem. Identifying geographic "hotspots" helps transportation planners prioritize countermeasures (signage, engineering, enforcement) and design targeted warnings or adapted traffic control. Using a large, multi-year, national dataset, we will detect statistically significant spatial accident hotspots across the contiguous U.S. and analyze trends in accident frequency and severity. This combined approach can help direct resources to dangerous places and times, and potentially educate the public on conditions that elevate accident risk.
+            </p>
         </section>
         
         <section class="data-intro">
             <h2>About the Data</h2>
             <p>Our dataset comes from Kaggle and can be found here: <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents/data">US Accidents (2016 - 2023)</a>. This dataset was collected via multiple traffic camera APIs covering streams from US and state DOTs, law enforcement feeds, and sensors for the continental United States from Feb 2016 to Mar 2023, with about 7.7M accident records. 
-                Typical fields include: location (latitude, longitude), start/end timestamps, accident severity, weather variables (temperature, visibility, precipitation), road type, number of vehicles, and first-account descriptions.</p>
+                Typical fields include: location (latitude, longitude), start/end timestamps, accident severity (1 - 4), road type, and many weather variables (temperature, visibility, precipitation)</p>
         </section>
         
         <section class="visualizations">
             <h2>Visualizations</h2>
             
             <div class="visualization"> 
-                <h3>Interactive Altair Plot</h3>
+                <h3>Geographic Hotspots in Massachusetts</h3>
                 <iframe src="Hotspot_Map.html" width="100%" height="750px" frameborder="0"></iframe>
                 <div class="summary">
                     <strong>Summary of Findings:</strong>
-                    <p>This plot groups Massachussets crash data into geographic grid cells, then counts how many accidents happened in each cell. The quantile-based bin system is better for displaying non-uniform distribution. Each circle is a bin, where the size of the bin is dependent on how many accidents occur in that location, 
-                        and the color of the bin is dependent on the average severity of those crashes. The dataset is filtered to that each circle has at minimum 2 accidents.
-                        This plot has tooltips for Most Common Road in the bin, Average severity (1 being least and 4 being most severe), and total number of accidents in the bin. The tooltips also show the most common road that the accident occurred on, giving a good sense of which roads tend to be the most dangerous or most likely for an accident to occur on.
-                        From this plot, we can see that more severe accidents tend to happen on main highways like I-495, I-95, I-93, I-90, and I-91, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on less-popular roads, likely due to the decreased speed limits on those roads.</p>
+                    <p>
+                        Using latitude and longitude data, this plot groups Massachusetts accident data into geographic bins, then counts how many accidents happened in each bin. The size of the circle is dependent on how many accidents occur in that location, and the color of the bin is dependent on the average severity of those crashes. The dataset is filtered so that each circle has at least 2 accidents. This plot has tooltips to give more detail on the road, as well as an exact display of average severity and accident count. From this plot, we can see that more severe accidents tend to happen on main highways like interstates 495, 95, and 90, probably due to the higher speed that vehicles are traveling at. The less-severe accidents are happening on less-popular roads, likely due to the decreased speed limits on those roads.
+                    </p>
                 </div>
             </div>
         </section>
@@ -123,22 +122,17 @@
            
     <div class="wide-container">
         <div class="visualization" style="max-width: none; padding: 40px 20px;">
-            <h3>Interactive Altair Plot</h3>
+            <h3>Time-of-Day Crash Analysis in Massachusetts</h3>
             <iframe src="Count_and_Severity_by_Hour_Map.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
             <div class="summary">
                 <strong>Summary of Findings:</strong>
-                <p>This is a side-by-side plot of Accident Counts and Average Severity in Massachusetts counties, with an interactive slider bar showing the values corresponding to each hour of the day. This is data from 2016-2023. 
-                    From this plot, we can see that most accidents occur in Middlesex, Norfolk, and Suffolk counties during 8-7am and 4-5pm. This could be due to the rush-hour commute of people from suburbs into the city of Boston, who get into accidents on their way to and from work. 
-                    From the corresponding severity map on the right, we can see that severity is highest in the middle of the night (12am - 4am, decreases during the day, then increases again around 8pm-11pm. 
-                    This could be due to the fact that there are more drunk drivers are the road during this time, driving home from after-dinner drinks or clubs as the evening gets later. 
-                    It seems that severity is higher in more rural regions, possibly due to the fact that it's harder to get ubers or rides from other people, and the only option late at night is to drive yourself under the influence.
-                    It seems that there is an inverse relationship between accident count and accident severity, where more severe accidents are more rare and if lots of accidents are happening, they are not as severe. 
-                    Future directions include plotting the relationship between accident count and accident severity.</p>
+                <p>This is a side-by-side choropleth map of Accident Counts and Average Severity in Massachusetts counties, with an interactive slider bar to navigate through each hour of the day. From this plot, we can see that most accidents occur in Middlesex, Norfolk, and Suffolk counties during 8-7am and 4-5pm. This could be due to the rush-hour commute of people from suburbs into the city of Boston, who get into accidents on their way to and from work. From the corresponding severity map on the right, we can see that severity is highest in the middle of the night and decreases during the day. This could be due to the fact that there are more drunk drivers on the road during the late night/early morning. It seems that there is an inverse relationship between accident count and accident severity, which we will discuss more in the next plot.
+                </p>
             </div>
         </div>
 
         <div class="visualization">
-            <h3>Interactive Altair Plot</h3>
+            <h3>Time-of-day Crash Analysis in United States</h3>
             <iframe src="bar_line_plot.html" style="width: 100%; height: 650px; display: block; margin: 0 auto;" frameborder="0"></iframe>
             <div class="summary">
                 <strong>Summary of Findings:</strong>
@@ -153,7 +147,7 @@
 
     <div class="container">
         <div class="visualization">
-            <h3>Static Plot</h3>
+            <h3>Weather Condition and Severity Analysis</h3>
             <img src="weather_plot.png" width="860" height="475"></img>
             <div class="summary">
                 <strong>Summary of Findings:</strong>
@@ -164,7 +158,7 @@
         </div>
         
         <div class="visualization">
-            <h3>D3 Plot</h3>
+            <h3>Weather Condition and Severity Heatmap</h3>
             <div style="overflow: hidden; width: 100%; height: 400px;">
                 <iframe src="weather.html" 
                         style="width: 100%; 
@@ -211,11 +205,11 @@
                 This could be due to higher amounts of traffic, causing the vehicles to move at a slower speed (since speed of vehicle is very strongly correlated with crash severity). 
             </p>
             <p>
-                We also observed several different variables that appear to be associated with the severity of a car accident, namely, road type, day of the week, hour of the day, and weather at the time of the accident. 
-                With respect to road type, accidents on highways tend to be more severe than on other types of roads, potentially due to higher speed limits on these roads and a higher volume of travel. Less severe accidents tend to be on less-populated roads, likely due to their lower speed limits. 
+                We also observed several different variables that appear to be associated with the severity of a car accident, namely: road type, day of the week, hour of the day, and weather at the time of the accident. 
+                With respect to road type, accidents on highways tend to be more severe than on other types of roads, potentially due to higher speed limits on these roads and a higher volume of travel. Less severe accidents tend to be on less-populated roads, likely due to their lower speed limits.
             </p>
             <p>
-                In terms of a driver's safety when it comes to day of the week and the time we had some conclusive results from the data. It turns out that weekdays came out to having more car crashes than weekends generally, but weekends had more severe crashes. While the severity from an average weekday to weekend goes from 2.384 to 2.460, 
+                In terms of a driver's safety when it comes to day of the week and the time, we had some conclusive results from the data. It turns out that weekdays came out to having more car crashes than weekends generally, but weekends had more severe crashes. While the severity from an average weekday to weekend goes from 2.384 to 2.460, 
                 only a 3.19% increase, the amount it can vary around certain times is greater. For example, around 1 am, severity from weekday to weekend increases 10.16%.  The data also gives us many insights into the less safe hours of the day to drive. We concluded that around 11 am and around 8 pm are when most accidents occur. 
                 This can change drastically with the day of the week, reflecting work and socializing habits. Saturday has the majority of its crashes at 3 pm, possibly because there is no work or school to keep people off the road at this time.  Furthermore, it should be noted that there are fewer accidents during sleeping hours, 
                 but the severity of those crashes are generally worse than at other times of the day. All this to say, drivers should stay vigilant at all times, as both the likelihood and severity of crashes can shift depending on the day and hour.
